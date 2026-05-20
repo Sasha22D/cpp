@@ -3,7 +3,15 @@
 class Contact
 {
 private:
-	string name;
+	std::string firstName;
+	std::string lastName;
+	std::string nickname;
+	std::string phoneNumber;
+	std::string darkestSecret;
 public:
-	string GetName() const;
+	std::string GetFirstName() const;
+	std::string GetLastName() const;
+	std::string GetNickname() const;
+	std::string GetphoneNumber() const;
+	std::string GetDarkestSecret() const;
 };

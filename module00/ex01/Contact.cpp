@@ -1,5 +1,9 @@
 #include "Contact.hpp"
 
+Contact::Contact() {
+	
+}
+
 std::string Contact::GetFirstName() const {
 	return _firstName;
 }

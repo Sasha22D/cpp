@@ -1,5 +1,10 @@
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+
 #include "Contact.hpp"
 #include <iostream>
+
+#endif
 
 class PhoneBook
 {
@@ -11,8 +16,8 @@ public:
 		_contactNumber = 0;
 	};
 	std::string prompt_menu(void);
-	void removeOldestUser(void);
 	void addUser(void);
-	void searchUser(void);
-	void exitPhoneBook(void);
+	// void removeOldestUser(void);
+	// void searchUser(void);
+	// void exitPhoneBook(void);
 };

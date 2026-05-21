@@ -4,8 +4,6 @@
 #include "Contact.hpp"
 #include <iostream>
 
-#endif
-
 class PhoneBook
 {
 private:
@@ -21,3 +19,5 @@ public:
 	// void searchUser(void);
 	// void exitPhoneBook(void);
 };
+
+#endif

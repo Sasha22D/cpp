@@ -3,8 +3,6 @@
 
 #include <string>
 
-#endif
-
 class Contact
 {
 private:
@@ -26,3 +24,5 @@ public:
 	void SetPhoneNumber(std::string arg);
 	void SetDarkestSecret(std::string arg);
 };
+
+#endif

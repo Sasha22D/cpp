@@ -1,6 +1,6 @@
 #include "PhoneBook.hpp"
 
-std::string	prompt_menu(void)
+std::string	PhoneBook::prompt_menu(void)
 {
 	std::string cmd;
 

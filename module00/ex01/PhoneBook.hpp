@@ -7,7 +7,9 @@ private:
 	Contact _contactList[8];
 	int	_contactNumber;
 public:
-	PhoneBook();
+	PhoneBook() {
+		_contactNumber = 0;
+	};
 	std::string prompt_menu(void);
 	void removeOldestUser(void);
 	void addUser(void);

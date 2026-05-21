@@ -10,12 +10,10 @@ private:
 	Contact _contactList[8];
 	int	_contactNumber;
 public:
-	PhoneBook() {
-		_contactNumber = 0;
-	};
+	PhoneBook();
 	std::string prompt_menu(void);
+	Contact	PhoneBook::getNewUser(void);
 	void addUser(void);
-	// void removeOldestUser(void);
 	// void searchUser(void);
 	// void exitPhoneBook(void);
 };

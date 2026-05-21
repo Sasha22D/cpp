@@ -2,6 +2,10 @@
 
 typedef void (Contact::*contactMethod)(std::string);
 
+PhoneBook::PhoneBook() : _contactNumber(0) {
+
+}
+
 std::string	PhoneBook::prompt_menu(void) {
 	std::string cmd;
 
@@ -19,7 +23,7 @@ std::string	PhoneBook::prompt_menu(void) {
 	return (cmd);
 }
 
-void PhoneBook::addUser(void) {
+Contact	PhoneBook::getNewUser(void) {
 	std::string answer;
 	std::string prompts[5] = {
 		"Enter new contact's first name: ",
@@ -41,5 +45,26 @@ void PhoneBook::addUser(void) {
 		std::cout << prompts[i];
 		getline(std::cin, answer);
 		(newUser.*methods[i])(answer);
+	}
+
+	return newUser;
+}
+
+void PhoneBook::addUser(void) {
+	Contact newUser = getNewUser();
+
+	if (_contactNumber == 8) {
+		Contact tmp;
+		for (int i = 0; i < 7; i++)
+		{
+			tmp = _contactList[i];
+			_contactList[i] = _contactList[i + 1];
+			_contactList[i + 1] = tmp;
+		}
+		_contactList[7] = newUser;
+	}
+	else {
+		_contactList[_contactNumber] = newUser;
+		_contactNumber++;
 	}
 }

@@ -9,14 +9,16 @@ int	main(int ac, char **av)
 
 	while (true)
 	{
-		pb.prompt_menu();
+		pb.promptMenu();
 		getline(std::cin, cmd);
 		if (cmd.compare("ADD") == 0) {
 			pb.addUser();
 		}
 		else if (cmd.compare("SEARCH") == 0) {
-			pb.prompt_table();
+			pb.promptTable();
 			getline(std::cin, cmd);
 		}
+		else if (cmd.compare("EXIT") == 0)
+			break;
 	}
 }

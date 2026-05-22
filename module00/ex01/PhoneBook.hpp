@@ -14,9 +14,9 @@ private:
 	std::string _column_headers[4];
 public:
 	PhoneBook();
-	void prompt_menu(void);
-	void prompt_table(void);
-	void print_table_row(int index);
+	void promptMenu(void);
+	void promptTable(void);
+	void printTableRow(int index);
 	Contact	getNewUser(void);
 	void addUser(void);
 	// void searchUser(void);

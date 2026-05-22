@@ -2,13 +2,16 @@
 
 typedef void (Contact::*contactMethod)(std::string);
 
-PhoneBook::PhoneBook() : _contactNumber(0) {
-
+PhoneBook::PhoneBook() {
+	_contactNumber = 0;
+	_column_headers[0] = "Index";
+	_column_headers[1] = "First Name";
+	_column_headers[2] = "Last Name";
+	_column_headers[3] = "Nickname";
 }
 
-std::string	PhoneBook::prompt_menu(void) {
-	std::string cmd;
-
+void	PhoneBook::prompt_menu(void) {
+	std::system("clear");
 	std::cout << "╔══════════════════════╗\n";
 	std::cout << "║ Welcome to PhoneBook ║\n";
 	std::cout << "╠══════════════════════╣\n";
@@ -19,8 +22,39 @@ std::string	PhoneBook::prompt_menu(void) {
 	std::cout << "╚══════════════════════╝\n";
 
 	std::cout << "\nEnter command: ";
-	getline(std::cin, cmd);
-	return (cmd);
+}
+
+void	print_first_table_line(std::string headers[4])
+{
+	std::string line;
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < headers[i].length() + 2; j++) {
+			line += "═";
+		}
+		if (i != 3)
+			line += "╦";
+	}
+	std::cout << "╔" << line << "╗\n";
+}
+
+void	print_last_table_line(std::string headers[4])
+{
+	std::string line;
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < headers[i].length() + 2; j++) {
+			line += "═";
+		}
+		if (i != 3)
+			line += "╩";
+	}
+	std::cout << "╚" << line << "╝\n";
+}
+
+void	PhoneBook::prompt_table(void) {
+	std::system("clear");
+	print_first_table_line(_column_headers);
+	std::cout << "║ " << _column_headers[0] << " ║ " << _column_headers[1] << " ║ " << _column_headers[2] << " ║ " << _column_headers[3] << " ║\n";
+	print_last_table_line(_column_headers);
 }
 
 Contact	PhoneBook::getNewUser(void) {

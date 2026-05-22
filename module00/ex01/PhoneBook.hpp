@@ -4,6 +4,7 @@
 #include "Contact.hpp"
 #include <iostream>
 #include <cstdlib>
+#include <sstream>
 
 class PhoneBook
 {
@@ -15,6 +16,7 @@ public:
 	PhoneBook();
 	void prompt_menu(void);
 	void prompt_table(void);
+	void print_table_row(int index);
 	Contact	getNewUser(void);
 	void addUser(void);
 	// void searchUser(void);

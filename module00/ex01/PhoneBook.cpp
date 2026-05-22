@@ -10,6 +10,12 @@ PhoneBook::PhoneBook() {
 	_column_headers[3] = "Nickname";
 }
 
+std::string int_to_string(int nbr) {
+	std::ostringstream oss;
+	oss << nbr;
+	return oss.str();
+}
+
 void	PhoneBook::prompt_menu(void) {
 	std::system("clear");
 	std::cout << "╔══════════════════════╗\n";
@@ -24,8 +30,7 @@ void	PhoneBook::prompt_menu(void) {
 	std::cout << "\nEnter command: ";
 }
 
-void	print_first_table_line(std::string headers[4])
-{
+void	print_first_table_line(std::string headers[4]) {
 	std::string line;
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < headers[i].length() + 2; j++) {
@@ -37,8 +42,41 @@ void	print_first_table_line(std::string headers[4])
 	std::cout << "╔" << line << "╗\n";
 }
 
-void	print_last_table_line(std::string headers[4])
-{
+std::string	format_value(std::string value, int size) {
+	if (value.length() > size)
+		return value.substr(0, size - 1) + ".";
+	else if (value.length() < size)
+		return std::string(size - value.length(), ' ') + value;
+	return value;
+}
+
+void	print_row_separator(std::string headers[4]) {
+	std::string line;
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < headers[i].length() + 2; j++) {
+			line += "═";
+		}
+		if (i != 3)
+			line += "╬";
+	}
+	std::cout << "╠" << line << "╣\n";
+}
+
+void	PhoneBook::print_table_row(int index) {
+	Contact &user = _contactList[index];
+	std::string formatted_values[4] = {
+		format_value(int_to_string(index + 1), _column_headers[0].length()),
+		format_value(user.GetFirstName(), _column_headers[1].length()),
+		format_value(user.GetLastName(), _column_headers[2].length()),
+		format_value(user.GetNickname(), _column_headers[3].length())
+	};
+	for (int i = 0; i < 4; i++) {
+		std::cout << "║ " << formatted_values[i] << " ";
+	}
+	std::cout << "║\n";
+}
+
+void	print_last_table_line(std::string headers[4]) {
 	std::string line;
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < headers[i].length() + 2; j++) {
@@ -54,6 +92,10 @@ void	PhoneBook::prompt_table(void) {
 	std::system("clear");
 	print_first_table_line(_column_headers);
 	std::cout << "║ " << _column_headers[0] << " ║ " << _column_headers[1] << " ║ " << _column_headers[2] << " ║ " << _column_headers[3] << " ║\n";
+	for (int i = 0; i < _contactNumber; i++) {
+		print_row_separator(_column_headers);
+		print_table_row(i);
+	}
 	print_last_table_line(_column_headers);
 }
 

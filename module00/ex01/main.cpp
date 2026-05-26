@@ -2,7 +2,7 @@
 #include <string>
 #include "PhoneBook.hpp"
 
-int	main(int ac, char **av)
+int	main()
 {
 	std::string cmd;
 	PhoneBook pb = PhoneBook();
@@ -12,13 +12,14 @@ int	main(int ac, char **av)
 	{
 		pb.promptMenu();
 		getline(std::cin, cmd);
+		if (std::cin.eof())
+			std::exit(0);
 		if (cmd.compare("ADD") == 0) {
 			std::cout << "\033[2J\033[H";
 			pb.addUser();
 		}
 		else if (cmd.compare("SEARCH") == 0) {
 			pb.promptTable();
-			getline(std::cin, cmd);
 		}
 		else if (cmd.compare("EXIT") == 0)
 			break;

@@ -30,9 +30,9 @@ static std::string int_to_string(int nbr) {
 }
 
 static std::string	format_value(const std::string &value, int size) {
-	if (value.length() > size)
+	if (value.length() > (size_t)size)
 		return value.substr(0, size - 1) + ".";
-	else if (value.length() < size)
+	else if (value.length() < (size_t)size)
 		return std::string(size - value.length(), ' ') + value;
 	return value;
 }
@@ -40,7 +40,7 @@ static std::string	format_value(const std::string &value, int size) {
 static void	print_first_table_line(const std::string headers[4]) {
 	std::string line;
 	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < headers[i].length() + 2; j++) {
+		for (size_t j = 0; j < headers[i].length() + 2; j++) {
 			line += "═";
 		}
 		if (i != 3)
@@ -52,7 +52,7 @@ static void	print_first_table_line(const std::string headers[4]) {
 static void	print_row_separator(const std::string headers[4]) {
 	std::string line;
 	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < headers[i].length() + 2; j++) {
+		for (size_t j = 0; j < headers[i].length() + 2; j++) {
 			line += "═";
 		}
 		if (i != 3)
@@ -78,7 +78,7 @@ static void	print_table_row(int index, const Contact contact_list[8], const std:
 static void	print_last_table_line(const std::string headers[4]) {
 	std::string line;
 	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < headers[i].length() + 2; j++) {
+		for (size_t j = 0; j < headers[i].length() + 2; j++) {
 			line += "═";
 		}
 		if (i != 3)
@@ -100,6 +100,8 @@ static void	prompt_single_user(const Contact contact_list[8], const std::string 
 	while (!check_index(index, contact_number)) {
 		std::cout << "\nEnter index of contact you want to display: ";
 		std::cin >> index;
+		if (std::cin.eof())
+			std::exit(0);
 	}
 	std::cout << "\n" << "\033[2J\033[H";;
 	print_first_table_line(headers);
@@ -144,6 +146,8 @@ Contact	PhoneBook::getNewUser(void) {
 		(newUser.*methods[i])(answer);
 		if (answer.compare("") == 0)
 			i -= 1;
+		if (std::cin.eof())
+			std::exit(0);
 	}
 	return newUser;
 }

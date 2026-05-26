@@ -19,7 +19,10 @@ int	main()
 			pb.addUser();
 		}
 		else if (cmd.compare("SEARCH") == 0) {
-			pb.promptTable();
+			if (pb.getContactNumber() == 0)
+				std::cout << "\033[2J\033[H" << "Contact List is empty\n";
+			else
+				pb.promptTable();
 		}
 		else if (cmd.compare("EXIT") == 0)
 			break;

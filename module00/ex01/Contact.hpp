@@ -18,11 +18,11 @@ public:
 	std::string GetNickname() const;
 	std::string GetPhoneNumber() const;
 	std::string GetDarkestSecret() const;
-	void SetFirstName(std::string arg);
-	void SetLastName(std::string arg);
-	void SetNickname(std::string arg);
-	void SetPhoneNumber(std::string arg);
-	void SetDarkestSecret(std::string arg);
+	void SetFirstName(const std::string &arg);
+	void SetLastName(const std::string &arg);
+	void SetNickname(const std::string &arg);
+	void SetPhoneNumber(const std::string &arg);
+	void SetDarkestSecret(const std::string &arg);
 };
 
 #endif

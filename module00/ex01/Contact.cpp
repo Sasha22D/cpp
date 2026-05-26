@@ -24,22 +24,22 @@ std::string Contact::GetDarkestSecret() const {
 	return _darkestSecret;
 }
 
-void Contact::SetFirstName(std::string arg) {
+void Contact::SetFirstName(const std::string &arg) {
 	_firstName = arg;
 }
 
-void Contact::SetLastName(std::string arg) {
+void Contact::SetLastName(const std::string &arg) {
 	_lastName = arg;
 }
 
-void Contact::SetNickname(std::string arg) {
+void Contact::SetNickname(const std::string &arg) {
 	_nickname = arg;
 }
 
-void Contact::SetPhoneNumber(std::string arg) {
+void Contact::SetPhoneNumber(const std::string &arg) {
 	_phoneNumber = arg;
 }
 
-void Contact::SetDarkestSecret(std::string arg) {
+void Contact::SetDarkestSecret(const std::string &arg) {
 	_darkestSecret = arg;
 }

@@ -1,6 +1,6 @@
 #include "PhoneBook.hpp"
 
-typedef void (Contact::*contactMethod)(std::string);
+typedef void (Contact::*contactMethod)(const std::string &);
 
 PhoneBook::PhoneBook() {
 	_contactNumber = 0;
@@ -10,7 +10,7 @@ PhoneBook::PhoneBook() {
 	_column_headers[3] = "Nickname";
 }
 
-void	PhoneBook::promptMenu(void) {
+void	PhoneBook::promptMenu(void) const{
 	std::cout << "╔══════════════════════╗\n";
 	std::cout << "║ Welcome to PhoneBook ║\n";
 	std::cout << "╠══════════════════════╣\n";
@@ -29,7 +29,7 @@ static std::string int_to_string(int nbr) {
 	return oss.str();
 }
 
-static std::string	format_value(std::string value, int size) {
+static std::string	format_value(const std::string &value, int size) {
 	if (value.length() > size)
 		return value.substr(0, size - 1) + ".";
 	else if (value.length() < size)
@@ -37,7 +37,7 @@ static std::string	format_value(std::string value, int size) {
 	return value;
 }
 
-static void	print_first_table_line(std::string headers[4]) {
+static void	print_first_table_line(const std::string headers[4]) {
 	std::string line;
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < headers[i].length() + 2; j++) {
@@ -49,7 +49,7 @@ static void	print_first_table_line(std::string headers[4]) {
 	std::cout << "╔" << line << "╗\n";
 }
 
-static void	print_row_separator(std::string headers[4]) {
+static void	print_row_separator(const std::string headers[4]) {
 	std::string line;
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < headers[i].length() + 2; j++) {
@@ -61,8 +61,8 @@ static void	print_row_separator(std::string headers[4]) {
 	std::cout << "╠" << line << "╣\n";
 }
 
-static void	print_table_row(int index, Contact contact_list[8], std::string headers[4]) {
-	Contact &user = contact_list[index];
+static void	print_table_row(int index, const Contact contact_list[8], const std::string headers[4]) {
+	const Contact &user = contact_list[index];
 	std::string formatted_values[4] = {
 		format_value(int_to_string(index + 1), headers[0].length()),
 		format_value(user.GetFirstName(), headers[1].length()),
@@ -75,7 +75,7 @@ static void	print_table_row(int index, Contact contact_list[8], std::string head
 	std::cout << "║\n";
 }
 
-static void	print_last_table_line(std::string headers[4]) {
+static void	print_last_table_line(const std::string headers[4]) {
 	std::string line;
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < headers[i].length() + 2; j++) {
@@ -93,7 +93,7 @@ static bool	check_index(int index, int contact_number) {
 	return false;
 }
 
-static void	prompt_single_user(Contact contact_list[8], std::string headers[4], int contact_number) {
+static void	prompt_single_user(const Contact contact_list[8], const std::string headers[4], int contact_number) {
 	std::string user_index;
 	int	index = 0;
 
@@ -109,7 +109,7 @@ static void	prompt_single_user(Contact contact_list[8], std::string headers[4], 
 	print_last_table_line(headers);
 }
 
-void	PhoneBook::promptTable(void) {
+void	PhoneBook::promptTable(void) const {
 	std::cout << "\033[2J\033[H";
 	print_first_table_line(_column_headers);
 	std::cout << "║ " << _column_headers[0] << " ║ " << _column_headers[1] << " ║ " << _column_headers[2] << " ║ " << _column_headers[3] << " ║\n";

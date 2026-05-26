@@ -13,6 +13,7 @@ int	main(int ac, char **av)
 		pb.promptMenu();
 		getline(std::cin, cmd);
 		if (cmd.compare("ADD") == 0) {
+			std::cout << "\033[2J\033[H";
 			pb.addUser();
 		}
 		else if (cmd.compare("SEARCH") == 0) {
@@ -21,5 +22,7 @@ int	main(int ac, char **av)
 		}
 		else if (cmd.compare("EXIT") == 0)
 			break;
+		else
+			std::cout << "\033[2J\033[H";
 	}
 }

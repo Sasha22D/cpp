@@ -11,7 +11,6 @@ PhoneBook::PhoneBook() {
 }
 
 void	PhoneBook::promptMenu(void) {
-	std::cout << "\033[2J\033[H";
 	std::cout << "╔══════════════════════╗\n";
 	std::cout << "║ Welcome to PhoneBook ║\n";
 	std::cout << "╠══════════════════════╣\n";
@@ -62,13 +61,13 @@ static void	print_row_separator(std::string headers[4]) {
 	std::cout << "╠" << line << "╣\n";
 }
 
-void	PhoneBook::printTableRow(int index) {
-	Contact &user = _contactList[index];
+static void	print_table_row(int index, Contact contact_list[8], std::string headers[4]) {
+	Contact &user = contact_list[index];
 	std::string formatted_values[4] = {
-		format_value(int_to_string(index + 1), _column_headers[0].length()),
-		format_value(user.GetFirstName(), _column_headers[1].length()),
-		format_value(user.GetLastName(), _column_headers[2].length()),
-		format_value(user.GetNickname(), _column_headers[3].length())
+		format_value(int_to_string(index + 1), headers[0].length()),
+		format_value(user.GetFirstName(), headers[1].length()),
+		format_value(user.GetLastName(), headers[2].length()),
+		format_value(user.GetNickname(), headers[3].length())
 	};
 	for (int i = 0; i < 4; i++) {
 		std::cout << "║ " << formatted_values[i] << " ";
@@ -88,15 +87,36 @@ static void	print_last_table_line(std::string headers[4]) {
 	std::cout << "╚" << line << "╝\n";
 }
 
+static bool	check_index(int index) {
+	if (index >= 1 && index <= 8)
+		return true;
+	return false;
+}
+
+static void	prompt_single_user(Contact contact_list[8], std::string headers[4], int contact_number) {
+	std::string user_index;
+	int	index = 0;
+	std::cout << "\nEnter index of contact you want to display: ";
+	while (!check_index(index))
+		std::cin >> index;
+	std::cout << "\n";
+	print_first_table_line(headers);
+	std::cout << "║ " << headers[0] << " ║ " << headers[1] << " ║ " << headers[2] << " ║ " << headers[3] << " ║\n";
+	print_row_separator(headers);
+	print_table_row(index - 1, contact_list, headers);
+	print_last_table_line(headers);
+}
+
 void	PhoneBook::promptTable(void) {
 	std::cout << "\033[2J\033[H";
 	print_first_table_line(_column_headers);
 	std::cout << "║ " << _column_headers[0] << " ║ " << _column_headers[1] << " ║ " << _column_headers[2] << " ║ " << _column_headers[3] << " ║\n";
 	for (int i = 0; i < _contactNumber; i++) {
 		print_row_separator(_column_headers);
-		printTableRow(i);
+		print_table_row(i, _contactList, _column_headers);
 	}
 	print_last_table_line(_column_headers);
+	prompt_single_user(_contactList, _column_headers, _contactNumber);
 }
 
 Contact	PhoneBook::getNewUser(void) {
@@ -120,6 +140,8 @@ Contact	PhoneBook::getNewUser(void) {
 		std::cout << prompts[i];
 		getline(std::cin, answer);
 		(newUser.*methods[i])(answer);
+		if (answer.compare("") == 0)
+			i -= 1;
 	}
 	return newUser;
 }

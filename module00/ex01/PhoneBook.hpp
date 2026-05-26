@@ -16,7 +16,6 @@ public:
 	PhoneBook();
 	void promptMenu(void);
 	void promptTable(void);
-	void printTableRow(int index);
 	Contact	getNewUser(void);
 	void addUser(void);
 	// void searchUser(void);

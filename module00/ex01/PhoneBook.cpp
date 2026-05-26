@@ -87,8 +87,8 @@ static void	print_last_table_line(std::string headers[4]) {
 	std::cout << "╚" << line << "╝\n";
 }
 
-static bool	check_index(int index) {
-	if (index >= 1 && index <= 8)
+static bool	check_index(int index, int contact_number) {
+	if (index >= 1 && index <= contact_number)
 		return true;
 	return false;
 }
@@ -96,10 +96,12 @@ static bool	check_index(int index) {
 static void	prompt_single_user(Contact contact_list[8], std::string headers[4], int contact_number) {
 	std::string user_index;
 	int	index = 0;
-	std::cout << "\nEnter index of contact you want to display: ";
-	while (!check_index(index))
+
+	while (!check_index(index, contact_number)) {
+		std::cout << "\nEnter index of contact you want to display: ";
 		std::cin >> index;
-	std::cout << "\n";
+	}
+	std::cout << "\n" << "\033[2J\033[H";;
 	print_first_table_line(headers);
 	std::cout << "║ " << headers[0] << " ║ " << headers[1] << " ║ " << headers[2] << " ║ " << headers[3] << " ║\n";
 	print_row_separator(headers);

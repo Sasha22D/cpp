@@ -7,6 +7,7 @@ int	main(int ac, char **av)
 	std::string cmd;
 	PhoneBook pb = PhoneBook();
 
+	std::cout << "\033[2J\033[H";
 	while (true)
 	{
 		pb.promptMenu();

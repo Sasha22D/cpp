@@ -14,6 +14,7 @@ private:
 	std::string _column_headers[4];
 public:
 	PhoneBook();
+	int	getContactNumber(void) const;
 	void promptMenu(void) const;
 	void promptTable(void) const;
 	Contact	getNewUser(void);

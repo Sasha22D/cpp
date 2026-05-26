@@ -10,6 +10,10 @@ PhoneBook::PhoneBook() {
 	_column_headers[3] = "Nickname";
 }
 
+int	PhoneBook::getContactNumber() const {
+	return _contactNumber;
+}
+
 void	PhoneBook::promptMenu(void) const{
 	std::cout << "╔══════════════════════╗\n";
 	std::cout << "║ Welcome to PhoneBook ║\n";

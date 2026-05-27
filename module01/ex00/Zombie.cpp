@@ -5,11 +5,11 @@ Zombie::Zombie( std::string name ) {
 }
 
 Zombie::~Zombie() {
-	std::cout << _name;
+	std::cout << _name << " is destroyed\n";
 }
 
 void	Zombie::announce() {
-	std::cout << _name << ": BraiiiiiiinnnzzzZ...\n";
+	std::cout << getName() << ": BraiiiiiiinnnzzzZ...\n";
 }
 
 std::string Zombie::getName() const {

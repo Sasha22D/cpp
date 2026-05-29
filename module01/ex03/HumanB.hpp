@@ -12,10 +12,9 @@ private:
 public:
 	HumanB( std::string name );
 	~HumanB();
-	void	setWeapon( Weapon new_weapon );
+	void	setWeapon( Weapon &new_weapon );
 	void	attack();
 	std::string getName() const;
-	void	setName( std::string name );
 };
 
 #endif

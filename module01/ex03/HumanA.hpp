@@ -13,9 +13,8 @@ public:
 	HumanA( std::string name, Weapon &new_weapon );
 	~HumanA();
 	void		attack();
-	void		setWeapon( Weapon new_weapon );
+	void		setWeapon( Weapon &new_weapon );
 	std::string	getName() const;
-	void		setName( std::string name );
 };
 
 #endif

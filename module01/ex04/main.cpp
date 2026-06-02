@@ -8,24 +8,48 @@ std::string buildLine( std::string line, std::string s1, std::string s2 ) {
 	std::string	new_line;
 	if (line.find(s1) == std::string::npos)
 		return line;
-	while (index <= line.length()) {
-		line = line.substr(occ + s1.length(), line.length() - occ + s1.length());
+	while (index <= (int)line.length()) {
+		if (occ + s1.length() <= line.length())
+			line = line.substr(occ + s1.length(), line.length() - occ - s1.length());
 		occ = line.find(s1);
-		if (occ == std::string::npos) {
+		if ((size_t)occ == std::string::npos) {
 			new_line += line;
-			break ;
+			return new_line;
 		}
-		new_line += line.substr(0, line.length() - occ);
+		new_line += line.substr(0, occ);
+		new_line += s2;
 	}
 	return new_line;
 }
 
 int	main( int ac, char **av ) {
-	std::string filename = av[1];
-	std::ifstream file(filename);
+	std::string	filename;
+	std::string	replace_file;
+	std::ifstream file;
+	std::fstream new_file;
 	std::string line;
-	while (getline(file, line)) {
-		std::string new_line = buildLine(line, " ", "z");
-		std::cout << new_line << std::endl;
+	if (ac == 4) {
+		filename = av[1];
+		replace_file = av[1];
+		replace_file += ".replace";
+		file.open(filename.c_str(), std::fstream::in);
+		if (!file.is_open()) {
+			std::cout << "Could not open file\n";
+			return 1;
+		}
+		new_file.open(replace_file.c_str(), std::fstream::out);
+		if (!new_file.is_open()) {
+			file.close();
+			std::cout << "Could not open file\n";
+			return 1;
+		}
+		while (getline(file, line)) {
+			std::string new_line = buildLine(line, av[2], av[3]);
+			new_file << new_line << std::endl;
+		}
+		file.close();
+		new_file.close();
+		return 0;
 	}
+	return 1;
 }

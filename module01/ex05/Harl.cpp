@@ -4,20 +4,20 @@ Harl::Harl() {}
 
 Harl::~Harl() {}
 
-enum class LevelCode {
-	debug,
-	info,
-	warning,
-	error,
-	unknown
+enum LevelCode {
+	DEBUG,
+	INFO,
+	WARNING,
+	ERROR,
+	UNKNOWN
 };
 
 static LevelCode	getLevelCode( std::string &str ) {
-	if (str == "DEBUG") return LevelCode::debug;
-	if (str == "INFO") return LevelCode::info;
-	if (str == "WARNING") return LevelCode::warning;
-	if (str == "ERROR") return LevelCode::warning;
-	return LevelCode::unknown;
+	if (str == "DEBUG") return DEBUG;
+	if (str == "INFO") return INFO;
+	if (str == "WARNING") return WARNING;
+	if (str == "ERROR") return ERROR;
+	return UNKNOWN;
 }
 
 void	Harl::debug( void ) {
@@ -37,7 +37,7 @@ void	Harl::error( void ) {
 }
 
 void	Harl::complain( std::string level ) {
-	void (Harl::*f[4])( void ) = {
+	void (Harl::*methods[4])( void ) = {
 		&Harl::debug,
 		&Harl::info,
 		&Harl::warning,
@@ -46,17 +46,17 @@ void	Harl::complain( std::string level ) {
 	LevelCode level_code = getLevelCode(level);
 	switch (level_code)
 	{
-	case LevelCode::debug:
-		f[0];
+	case DEBUG:
+		(this->*methods[0])();
 		break;
-	case LevelCode::info:
-		f[1];
+	case INFO:
+		(this->*methods[1])();
 		break;
-	case LevelCode::warning:
-		f[2];
+	case WARNING:
+		(this->*methods[2])();
 		break;
-	case LevelCode::error:
-		f[3];
+	case ERROR:
+		(this->*methods[3])();
 		break;
 	default:
 		std::cout << "Level not supported.\n";

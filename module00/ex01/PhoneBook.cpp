@@ -106,6 +106,8 @@ static void	prompt_single_user(const Contact contact_list[8], const std::string 
 		std::cin >> index;
 		if (std::cin.eof())
 			std::exit(0);
+		std::cin.clear();
+		std::cin.ignore();
 	}
 	std::cout << "\n" << "\033[2J\033[H";;
 	print_first_table_line(headers);

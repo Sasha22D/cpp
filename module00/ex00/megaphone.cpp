@@ -1,25 +1,25 @@
 #include <iostream>
+#include <ctype.h>
+#include <string>
 
 int	main(int ac, char **av)
 {
 	if (ac != 1)
 	{
-		char	**p = av + 1;
-		while (*p)
-		{
-			char	*s = *p;
-			while (*s)
-			{
-				std::cout << (char)toupper(*s);
-				s++;
+		std::string s = av[1];
+		int j = 1;
+		while (av[j]) {
+			s = av[j];
+			for (std::string::size_type i = 0; i < s.length(); i++) {
+				s[i] = static_cast<char>(std::toupper(static_cast<unsigned char>(s[i])));
 			}
-			p++;
+			std::cout << s;
+			j++;
 		}
-		std::cout << std::endl;
+		std::cout << "\n";
 	}
 	else
 	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-		std::cout << std::endl;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
 	}
 }

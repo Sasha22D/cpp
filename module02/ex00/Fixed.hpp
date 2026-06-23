@@ -9,7 +9,7 @@ private:
 	int	_fixed_point;
 	static const int _width = 8;
 public:
-	Fixed(/* args */);
+	Fixed( void );
 	Fixed(const Fixed& other);
 	Fixed& operator=(const Fixed& other);
 	~Fixed();

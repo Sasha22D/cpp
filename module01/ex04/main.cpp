@@ -3,21 +3,23 @@
 #include <string>
 
 std::string buildLine( std::string line, std::string s1, std::string s2 ) {
-	int	index = 0;
-	int	occ;
-	std::string	new_line;
+	std::string new_line;
+	int occ;
+	int index = 0;
 	if (line.find(s1) == std::string::npos)
 		return line;
-	while (index <= (int)line.length()) {
-		if (occ + s1.length() <= line.length())
-			line = line.substr(occ + s1.length(), line.length() - occ - s1.length());
+
+	while (index <= line.length()) {
+		line = line.substr(index, line.length() - index);
+		index = 0;
 		occ = line.find(s1);
-		if ((size_t)occ == std::string::npos) {
+		if (occ == std::string::npos) {
 			new_line += line;
 			return new_line;
 		}
-		new_line += line.substr(0, occ);
+		new_line += line.substr(index, occ);
 		new_line += s2;
+		index += occ + s1.length();
 	}
 	return new_line;
 }

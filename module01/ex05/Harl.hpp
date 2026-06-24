@@ -13,7 +13,7 @@ private:
 	void warning( void );
 	void error( void );
 public:
-	Harl(/* args */);
+	Harl( void );
 	~Harl();
 	void complain( std::string level );
 };

@@ -26,10 +26,10 @@ public:
 	friend int operator<=( const Fixed& left, const Fixed& right );
 	friend int operator==( const Fixed& left, const Fixed& right );
 	friend int operator!=( const Fixed& left, const Fixed& right );
-	// friend int operator+( const Fixed& left, const Fixed& right );
-	// friend int operator-( const Fixed& left, const Fixed& right );
-	// friend int operator*( const Fixed& left, const Fixed& right );
-	// friend int operator/( const Fixed& left, const Fixed& right );
+	friend float operator+( const Fixed& left, const Fixed& right );
+	friend float operator-( const Fixed& left, const Fixed& right );
+	friend float operator*( const Fixed& left, const Fixed& right );
+	friend float operator/( const Fixed& left, const Fixed& right );
 };
 
 int operator>( const Fixed& left, const Fixed& right );
@@ -39,10 +39,10 @@ int operator<=( const Fixed& left, const Fixed& right );
 int operator==( const Fixed& left, const Fixed& right );
 int operator!=( const Fixed& left, const Fixed& right );
 
-// int operator+( const Fixed& left, const Fixed& right );
-// int operator-( const Fixed& left, const Fixed& right );
-// int operator*( const Fixed& left, const Fixed& right );
-// int operator/( const Fixed& left, const Fixed& right );
+float operator+( const Fixed& left, const Fixed& right );
+float operator-( const Fixed& left, const Fixed& right );
+float operator*( const Fixed& left, const Fixed& right );
+float operator/( const Fixed& left, const Fixed& right );
 
 std::ostream& operator<<(std::ostream &out, const Fixed &point);
 

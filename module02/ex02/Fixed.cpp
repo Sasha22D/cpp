@@ -77,3 +77,19 @@ int operator==( const Fixed& left, const Fixed& right ) {
 int operator!=( const Fixed& left, const Fixed& right ) {
 	return left._fixed_point != right._fixed_point;
 }
+
+float operator+( const Fixed& left, const Fixed& right ) {
+	return left.toFloat() + right.toFloat();
+}
+
+float operator-( const Fixed& left, const Fixed& right ) {
+	return left.toFloat() - right.toFloat();
+}
+
+float operator*( const Fixed& left, const Fixed& right ) {
+	return left.toFloat() * right.toFloat();
+}
+
+float operator/( const Fixed& left, const Fixed& right ) {
+	return left.toFloat() / right.toFloat();
+}

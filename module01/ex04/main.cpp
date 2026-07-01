@@ -9,11 +9,11 @@ std::string buildLine( std::string line, std::string s1, std::string s2 ) {
 	if (line.find(s1) == std::string::npos)
 		return line;
 
-	while (index <= line.length()) {
+	while (static_cast<size_t>(index) <= line.length()) {
 		line = line.substr(index, line.length() - index);
 		index = 0;
 		occ = line.find(s1);
-		if (occ == std::string::npos) {
+		if (static_cast<size_t>(occ) == std::string::npos) {
 			new_line += line;
 			return new_line;
 		}

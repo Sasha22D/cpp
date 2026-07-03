@@ -30,6 +30,10 @@ public:
 	friend float operator-( const Fixed& left, const Fixed& right );
 	friend float operator*( const Fixed& left, const Fixed& right );
 	friend float operator/( const Fixed& left, const Fixed& right );
+	Fixed& operator++();
+	Fixed operator++(int);
+	Fixed& operator--();
+	Fixed operator--(int);
 };
 
 int operator>( const Fixed& left, const Fixed& right );

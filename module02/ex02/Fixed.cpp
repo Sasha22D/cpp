@@ -93,3 +93,25 @@ float operator*( const Fixed& left, const Fixed& right ) {
 float operator/( const Fixed& left, const Fixed& right ) {
 	return left.toFloat() / right.toFloat();
 }
+
+Fixed& Fixed::operator++() {
+	_fixed_point++;
+	return *this;
+}
+
+Fixed Fixed::operator++( int ) {
+	Fixed temp = *this;
+	operator++();
+	return temp;
+}
+
+Fixed& Fixed::operator--() {
+	_fixed_point--;
+	return *this;
+}
+
+Fixed Fixed::operator--( int ) {
+	Fixed temp = *this;
+	operator--();
+	return temp;
+}

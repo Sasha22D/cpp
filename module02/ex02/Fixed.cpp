@@ -115,3 +115,31 @@ Fixed Fixed::operator--( int ) {
 	operator--();
 	return temp;
 }
+
+Fixed& Fixed::max( Fixed& left, Fixed& right ) {
+	if (left.toFloat() > right.toFloat())
+		return left;
+	else
+		return right;
+}
+
+const Fixed& Fixed::max( const Fixed& left, const Fixed& right ) {
+	if (left.toFloat() > right.toFloat())
+		return left;
+	else
+		return right;
+}
+
+Fixed& Fixed::min( Fixed& left, Fixed& right ) {
+	if (left.toFloat() < right.toFloat())
+		return left;
+	else
+		return right;
+}
+
+const Fixed& Fixed::min( const Fixed& left, const Fixed& right ) {
+	if (left.toFloat() < right.toFloat())
+		return left;
+	else
+		return right;
+}

@@ -54,52 +54,44 @@ std::ostream& operator<<(std::ostream &out, const Fixed &point) {
 	return out;
 }
 
-int Fixed::operator>( const Fixed& right ) {
+bool Fixed::operator>( const Fixed& right ) const {
 	return this->getRawBits() > right.getRawBits();
 }
 
-int Fixed::operator<( const Fixed& right ) {
+bool Fixed::operator<( const Fixed& right ) const {
 	return this->getRawBits() < right.getRawBits();
 }
 
-int Fixed::operator>=( const Fixed& right ) {
+bool Fixed::operator>=( const Fixed& right ) const {
 	return this->getRawBits() >= right.getRawBits();
 }
 
-int Fixed::operator<=( const Fixed& right ) {
+bool Fixed::operator<=( const Fixed& right ) const {
 	return this->getRawBits() <= right.getRawBits();
 }
 
-int Fixed::operator==( const Fixed& right ) {
+bool Fixed::operator==( const Fixed& right ) const {
 	return this->getRawBits() == right.getRawBits();
 }
 
-int Fixed::operator!=( const Fixed& right ) {
+bool Fixed::operator!=( const Fixed& right ) const {
 	return this->getRawBits() != right.getRawBits();
 }
 
-Fixed Fixed::operator+( const Fixed& right ) {
-	float result;
-	result = this->toFloat() + right.toFloat();
-	return Fixed(result);
+Fixed Fixed::operator+( const Fixed& right ) const {
+	return Fixed(this->toFloat() + right.toFloat());
 }
 
-Fixed Fixed::operator-( const Fixed& right ) {
-	float result;
-	result = this->toFloat() - right.toFloat();
-	return Fixed(result);
+Fixed Fixed::operator-( const Fixed& right ) const {
+	return Fixed(this->toFloat() - right.toFloat());
 }
 
-Fixed Fixed::operator*( const Fixed& right ) {
-	float result;
-	result = this->toFloat() * right.toFloat();
-	return Fixed(result);
+Fixed Fixed::operator*( const Fixed& right ) const {
+	return Fixed(this->toFloat() * right.toFloat());
 }
 
-Fixed Fixed::operator/( const Fixed& right ) {
-	float result;
-	result = this->toFloat() / right.toFloat();
-	return Fixed(result);
+Fixed Fixed::operator/( const Fixed& right ) const {
+	return Fixed(this->toFloat() / right.toFloat());
 }
 
 Fixed& Fixed::operator++() {
@@ -125,28 +117,28 @@ Fixed Fixed::operator--( int ) {
 }
 
 Fixed& Fixed::max( Fixed& left, Fixed& right ) {
-	if (left.toFloat() > right.toFloat())
+	if (left.getRawBits() > right.getRawBits())
 		return left;
 	else
 		return right;
 }
 
 const Fixed& Fixed::max( const Fixed& left, const Fixed& right ) {
-	if (left.toFloat() > right.toFloat())
+	if (left.getRawBits() > right.getRawBits())
 		return left;
 	else
 		return right;
 }
 
 Fixed& Fixed::min( Fixed& left, Fixed& right ) {
-	if (left.toFloat() < right.toFloat())
+	if (left.getRawBits() < right.getRawBits())
 		return left;
 	else
 		return right;
 }
 
 const Fixed& Fixed::min( const Fixed& left, const Fixed& right ) {
-	if (left.toFloat() < right.toFloat())
+	if (left.getRawBits() < right.getRawBits())
 		return left;
 	else
 		return right;

@@ -21,17 +21,17 @@ public:
 	float toFloat( void ) const;
 	int toInt( void ) const;
 
-	int operator>( const Fixed& right );
-	int operator<( const Fixed& right );
-	int operator>=( const Fixed& right );
-	int operator<=( const Fixed& right );
-	int operator==( const Fixed& right );
-	int operator!=( const Fixed& right );
+	bool operator>( const Fixed& right ) const ;
+	bool operator<( const Fixed& right ) const ;
+	bool operator>=( const Fixed& right ) const ;
+	bool operator<=( const Fixed& right ) const ;
+	bool operator==( const Fixed& right ) const ;
+	bool operator!=( const Fixed& right ) const ;
 
-	Fixed operator+( const Fixed& right );
-	Fixed operator-( const Fixed& right );
-	Fixed operator*( const Fixed& right );
-	Fixed operator/( const Fixed& right );
+	Fixed operator+( const Fixed& right ) const ;
+	Fixed operator-( const Fixed& right ) const ;
+	Fixed operator*( const Fixed& right ) const ;
+	Fixed operator/( const Fixed& right ) const ;
 
 	Fixed& operator++();
 	Fixed operator++(int);

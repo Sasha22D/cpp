@@ -10,6 +10,8 @@ protected:
     std::string _type;
 public:
     Animal();
+    Animal( const Animal& other );
+    Animal& operator=( const Animal& other );
     ~Animal();
     virtual void makeSound( void );
     const std::string& getType( void ) const;

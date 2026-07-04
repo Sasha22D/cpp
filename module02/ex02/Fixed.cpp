@@ -54,44 +54,52 @@ std::ostream& operator<<(std::ostream &out, const Fixed &point) {
 	return out;
 }
 
-int operator>( const Fixed& left, const Fixed& right ) {
-	return left._fixed_point > right._fixed_point;
+int Fixed::operator>( const Fixed& right ) {
+	return this->getRawBits() > right.getRawBits();
 }
 
-int operator<( const Fixed& left, const Fixed& right ) {
-	return left._fixed_point < right._fixed_point;
+int Fixed::operator<( const Fixed& right ) {
+	return this->getRawBits() < right.getRawBits();
 }
 
-int operator>=( const Fixed& left, const Fixed& right ) {
-	return left._fixed_point >= right._fixed_point;
+int Fixed::operator>=( const Fixed& right ) {
+	return this->getRawBits() >= right.getRawBits();
 }
 
-int operator<=( const Fixed& left, const Fixed& right ) {
-	return left._fixed_point <= right._fixed_point;
+int Fixed::operator<=( const Fixed& right ) {
+	return this->getRawBits() <= right.getRawBits();
 }
 
-int operator==( const Fixed& left, const Fixed& right ) {
-	return left._fixed_point == right._fixed_point;
+int Fixed::operator==( const Fixed& right ) {
+	return this->getRawBits() == right.getRawBits();
 }
 
-int operator!=( const Fixed& left, const Fixed& right ) {
-	return left._fixed_point != right._fixed_point;
+int Fixed::operator!=( const Fixed& right ) {
+	return this->getRawBits() != right.getRawBits();
 }
 
-float operator+( const Fixed& left, const Fixed& right ) {
-	return left.toFloat() + right.toFloat();
+Fixed Fixed::operator+( const Fixed& right ) {
+	float result;
+	result = this->toFloat() + right.toFloat();
+	return Fixed(result);
 }
 
-float operator-( const Fixed& left, const Fixed& right ) {
-	return left.toFloat() - right.toFloat();
+Fixed Fixed::operator-( const Fixed& right ) {
+	float result;
+	result = this->toFloat() - right.toFloat();
+	return Fixed(result);
 }
 
-float operator*( const Fixed& left, const Fixed& right ) {
-	return left.toFloat() * right.toFloat();
+Fixed Fixed::operator*( const Fixed& right ) {
+	float result;
+	result = this->toFloat() * right.toFloat();
+	return Fixed(result);
 }
 
-float operator/( const Fixed& left, const Fixed& right ) {
-	return left.toFloat() / right.toFloat();
+Fixed Fixed::operator/( const Fixed& right ) {
+	float result;
+	result = this->toFloat() / right.toFloat();
+	return Fixed(result);
 }
 
 Fixed& Fixed::operator++() {

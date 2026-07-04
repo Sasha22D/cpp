@@ -20,38 +20,29 @@ public:
 	void setRawBits( int const raw );
 	float toFloat( void ) const;
 	int toInt( void ) const;
-	friend int operator>( const Fixed& left, const Fixed& right );
-	friend int operator<( const Fixed& left, const Fixed& right );
-	friend int operator>=( const Fixed& left, const Fixed& right );
-	friend int operator<=( const Fixed& left, const Fixed& right );
-	friend int operator==( const Fixed& left, const Fixed& right );
-	friend int operator!=( const Fixed& left, const Fixed& right );
-	friend float operator+( const Fixed& left, const Fixed& right );
-	friend float operator-( const Fixed& left, const Fixed& right );
-	friend float operator*( const Fixed& left, const Fixed& right );
-	friend float operator/( const Fixed& left, const Fixed& right );
+
+	int operator>( const Fixed& right );
+	int operator<( const Fixed& right );
+	int operator>=( const Fixed& right );
+	int operator<=( const Fixed& right );
+	int operator==( const Fixed& right );
+	int operator!=( const Fixed& right );
+
+	Fixed operator+( const Fixed& right );
+	Fixed operator-( const Fixed& right );
+	Fixed operator*( const Fixed& right );
+	Fixed operator/( const Fixed& right );
+
 	Fixed& operator++();
 	Fixed operator++(int);
 	Fixed& operator--();
 	Fixed operator--(int);
+	
 	static Fixed& max( Fixed& left, Fixed& right );
 	static const Fixed& max( const Fixed& left, const Fixed& right );
 	static Fixed& min( Fixed& left, Fixed& right );
 	static const Fixed& min( const Fixed& left, const Fixed& right );
 };
-
-int operator>( const Fixed& left, const Fixed& right );
-int operator<( const Fixed& left, const Fixed& right );
-int operator>=( const Fixed& left, const Fixed& right );
-int operator<=( const Fixed& left, const Fixed& right );
-int operator==( const Fixed& left, const Fixed& right );
-int operator!=( const Fixed& left, const Fixed& right );
-
-float operator+( const Fixed& left, const Fixed& right );
-float operator-( const Fixed& left, const Fixed& right );
-float operator*( const Fixed& left, const Fixed& right );
-float operator/( const Fixed& left, const Fixed& right );
-
 std::ostream& operator<<(std::ostream &out, const Fixed &point);
 
 

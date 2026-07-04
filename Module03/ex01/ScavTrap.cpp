@@ -1,10 +1,22 @@
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap( std::string name ) : ClapTrap(name) {
+    std::cout << "ScavTrap ctor\n";
     _hitPoints = 100;
     _energyPoints = 50;
     _attackDamage = 20;
-    std::cout << "ScavTrap ctor\n";
+}
+
+ScavTrap::ScavTrap( const ScavTrap& other ) : ClapTrap(other) {
+    std::cout << "ScavTrap copy ctor\n";
+}
+
+ScavTrap& ScavTrap::operator=( const ScavTrap& other ) {
+    std::cout << "ScavTrap copy assignement ctor\n";
+    if (this != &other) {
+        ClapTrap::operator=(other);
+    }
+    return *this;
 }
 
 ScavTrap::~ScavTrap() {

@@ -7,6 +7,8 @@ int main() {
     // trap->guardGate();
     // delete trap;
     ScavTrap trap = ScavTrap("zozo");
+    // ScavTrap trap2(trap);
+    // trap2.attack("wowo");
     trap.attack("zizi");
     trap.guardGate();
     trap.takeDamage(99);

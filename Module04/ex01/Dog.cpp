@@ -17,6 +17,7 @@ Dog& Dog::operator=( const Dog& other ) {
 		Animal::operator=(other);
 		_brain = other._brain;
 	}
+	return *this;
 }
 
 Dog::~Dog() {
@@ -24,6 +25,6 @@ Dog::~Dog() {
 	delete _brain;
 }
 
-void Dog::makeSound() {
+void Dog::makeSound() const {
 	std::cout << getType() << " barks\n";
 }

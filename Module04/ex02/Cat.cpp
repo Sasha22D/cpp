@@ -8,15 +8,16 @@ Cat::Cat() : Animal() {
 
 Cat::Cat( const Cat& other ) : Animal(other) {
 	std::cout << "Cat copy ctor\n";
-	_brain = other._brain;
+	_brain = new Brain(*other._brain);
 }
 
 Cat& Cat::operator=( const Cat& other ) {
 	std::cout << "Cat copy assignment ctor\n";
 	if (this != &other) {
 		Animal::operator=(other);
-		_brain = other._brain;
+		_brain = new Brain(*other._brain);
 	}
+	return *this;
 }
 
 Cat::~Cat() {

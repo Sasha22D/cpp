@@ -18,6 +18,7 @@ Brain& Brain::operator=( const Brain& other ) {
 			_ideas[i] = other._ideas[i];
 		}
 	}
+	return *this;
 }
 
 Brain::~Brain() {

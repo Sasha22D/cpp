@@ -10,7 +10,7 @@ public:
     Cat( const Cat& other );
     Cat& operator=( const Cat& other );
     ~Cat();
-    void makeSound( void ) override;
+    void makeSound( void ) const;
 };
 
 #endif

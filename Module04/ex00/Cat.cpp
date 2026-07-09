@@ -21,6 +21,6 @@ Cat::~Cat() {
     std::cout << "Cat dtor\n";
 }
 
-void Cat::makeSound() {
+void Cat::makeSound() const {
     std::cout << getType() << " meows\n";
 }

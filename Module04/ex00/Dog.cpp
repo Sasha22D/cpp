@@ -21,6 +21,6 @@ Dog::~Dog() {
     std::cout << "Dog dtor\n";
 }
 
-void Dog::makeSound() {
+void Dog::makeSound() const {
     std::cout << getType() << " barks\n";
 }

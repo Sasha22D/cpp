@@ -21,7 +21,7 @@ Animal::~Animal() {
     std::cout << "Animal dtor\n";
 }
 
-void Animal::makeSound() {
+void Animal::makeSound() const {
     std::cout << "Animal makes sound\n";
 }
 

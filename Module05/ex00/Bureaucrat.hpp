@@ -18,8 +18,8 @@ class Bureaucrat
 	private:
 		const std::string	_name;
 		int	_grade;
-		std::exception GradeTooHighException;
-		std::exception GradeTooLowException;
+		const std::exception GradeTooHighException;
+		const std::exception GradeTooLowException;
 };
 
 #endif

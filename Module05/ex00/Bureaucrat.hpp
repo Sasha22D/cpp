@@ -13,13 +13,11 @@ class Bureaucrat
 		void incrementGrade( void );
 		void decrementGrade( void );
 		const std::string& getName() const;
-		const int getGrade() const;
+		int getGrade() const;
 
 	private:
 		const std::string	_name;
 		int	_grade;
-		std::exception GradeTooHighException;
-		std::exception GradeTooLowException;
 };
 
 #endif

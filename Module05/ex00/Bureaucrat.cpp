@@ -1,11 +1,13 @@
+#include "GradeTooHighException.hpp"
+#include "GradeTooLowException.hpp"
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat( int grade ) {
 	std::cout << "Bureaucrat ctor called.\n";
 	if (grade > 150)
-		throw GradeTooLowException;
+		throw GradeTooLowException();
 	else if (grade < 1)
-		throw GradeTooHighException;
+		throw GradeTooHighException();
 	else
 		_grade = grade;
 }
@@ -18,7 +20,7 @@ void Bureaucrat::incrementGrade( void ) {
 	if ((_grade - 1) >= 1) {
 		_grade -= 1;
 	} else {
-		throw GradeTooHighException;
+		throw GradeTooHighException();
 	}
 }
 
@@ -26,7 +28,7 @@ void Bureaucrat::decrementGrade( void ) {
 	if ((_grade + 1) <= 150) {
 		_grade += 1;
 	} else {
-		throw GradeTooLowException;
+		throw GradeTooLowException();
 	}
 }
 
@@ -34,6 +36,6 @@ const std::string& Bureaucrat::getName() const {
 	return _name;
 }
 
-const int Bureaucrat::getGrade() const {
+int Bureaucrat::getGrade() const {
 	return _grade;
 }

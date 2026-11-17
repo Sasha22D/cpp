@@ -11,6 +11,15 @@ AForm::AForm( const std::string& name, int grade_to_sign, int grade_to_exec ) : 
 	}
 }
 
+AForm::AForm( int grade_to_sign, int grade_to_execute ) : _grade_to_sign(grade_to_sign), _grade_to_execute(grade_to_execute) {
+	std::cout << "AForm ctor called.\n";
+	if (_grade_to_sign > 150 || _grade_to_execute > 150) {
+		throw GradeTooLowException();
+	} else if ( _grade_to_sign < 1 || _grade_to_execute < 1) {
+		throw GradeTooHighException();
+	}
+}
+
 AForm::~AForm() {
 	std::cout << "AForm dtor called.\n";
 }

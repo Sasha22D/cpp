@@ -15,6 +15,7 @@ private:
 	const int _grade_to_execute;
 public:
 	AForm( const std::string& name, int grade_to_sign, int grade_to_exec );
+	AForm( int grade_to_sign, int grade_to_execute );
 	AForm( const AForm& other );
 	AForm& operator=( const AForm& other );
 	~AForm();

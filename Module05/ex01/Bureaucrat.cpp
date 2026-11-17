@@ -29,6 +29,17 @@ Bureaucrat::~Bureaucrat() {
 	std::cout << "Bureaucrat dtor called.\n";
 }
 
+void Bureaucrat::signForm( Form& form ) {
+	try {
+		form.beSigned(*this);
+	}
+	catch (GradeTooLowException& e) {
+		std::cout << _name << " couldn’t sign " << form.getName() << " because his grade is too low.\n";
+		return ;
+	}
+	std::cout << _name << " signed " << form.getName() << std::endl;
+}
+
 void Bureaucrat::incrementGrade( void ) {
 	if ((_grade - 1) >= 1) {
 		_grade -= 1;

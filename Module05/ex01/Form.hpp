@@ -14,7 +14,7 @@ private:
 	const int _grade_to_sign;
 	const int _grade_to_execute;
 public:
-	Form( int grade );
+	Form( const std::string& name, int grade_to_sign, int grade_to_exec );
 	Form( const Form& other );
 	Form& operator=( const Form& other );
 	~Form();

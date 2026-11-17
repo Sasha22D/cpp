@@ -1,6 +1,8 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
+#include "Form.hpp"
+
 #include <exception>
 #include <string>
 #include <iostream>
@@ -12,6 +14,7 @@ class Bureaucrat
 		Bureaucrat( const Bureaucrat& other );
 		Bureaucrat& operator=( const Bureaucrat& other );
 		~Bureaucrat();
+		void signForm( Form& form );
 		void incrementGrade( void );
 		void decrementGrade( void );
 		const std::string& getName() const;

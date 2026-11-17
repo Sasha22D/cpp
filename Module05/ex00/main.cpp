@@ -2,14 +2,17 @@
 #include "GradeTooHighException.hpp"
 #include "GradeTooLowException.hpp"
 
+void print_info(const Bureaucrat& guy) {
+	std::cout << guy.getName() << ", bureaucrat grade " << guy.getGrade() << std::endl;
+}
+
 int main() {
 	try {
 		Bureaucrat sasha("Sasha", 150);
+		print_info(sasha);
 		Bureaucrat david(sasha);
-		std::cout << david.getGrade() << std::endl;
 		Bureaucrat wowo("wowo", 1);
 		david = wowo;
-		std::cout << david.getGrade() << std::endl;
 	}
 	catch(std::exception& e) {
 		std::cout << GradeTooLowException().what();

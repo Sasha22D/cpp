@@ -1,6 +1,4 @@
 #include "Bureaucrat.hpp"
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 
 void print_info(const Bureaucrat& guy) {
 	std::cout << guy.getName() << ", bureaucrat grade " << guy.getGrade() << std::endl;
@@ -8,14 +6,17 @@ void print_info(const Bureaucrat& guy) {
 
 int main() {
 	try {
-		Bureaucrat sasha("Sasha", 150);
+		Bureaucrat sasha("Sasha", 160);
 		print_info(sasha);
 		Bureaucrat david(sasha);
 		Bureaucrat wowo("wowo", 1);
 		david = wowo;
 	}
-	catch(std::exception& e) {
-		std::cout << GradeTooLowException().what();
+	catch(const Bureaucrat::GradeTooHighException& e) {
+		std::cout << e.what();
+	}
+	catch(const Bureaucrat::GradeTooLowException& e) {
+		std::cout << e.what();
 	}
 	// Bureaucrat("Franck", 155);
 }

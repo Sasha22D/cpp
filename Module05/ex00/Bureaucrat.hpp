@@ -7,19 +7,26 @@
 
 class Bureaucrat
 {
+public:
+	class GradeTooHighException: public std::exception {
 	public:
-		Bureaucrat( const std::string& name, int grade );
-		Bureaucrat( const Bureaucrat& other );
-		Bureaucrat& operator=( const Bureaucrat& other );
-		~Bureaucrat();
-		void incrementGrade( void );
-		void decrementGrade( void );
-		const std::string& getName() const;
-		int getGrade() const;
-
-	private:
-		const std::string	_name;
-		int	_grade;
+		const char* what() const throw();
+	};
+	class GradeTooLowException: public std::exception {
+	public:
+		const char* what() const throw();
+	};
+	Bureaucrat( const std::string& name, int grade );
+	Bureaucrat( const Bureaucrat& other );
+	Bureaucrat& operator=( const Bureaucrat& other );
+	~Bureaucrat();
+	void incrementGrade();
+	void decrementGrade();
+	const std::string getName() const;
+	int getGrade() const;
+private:
+	const std::string _name;
+	int _grade;
 };
 
 #endif

@@ -16,12 +16,12 @@ public:
 	class GradeTooLowException: public std::exception {
 		const char* what() const throw();
 	};
-	Form();
+	Form( const std::string& name, int grade_to_sign, int grade_to_exec );
 	Form( const Form& other );
 	Form& operator=( const Form& other );
 	~Form();
 	void beSigned( const Bureaucrat& signer );
-	const std::string getName() const;
+	const std::string& getName() const;
 	bool getSignedStatus() const;
 	int getGradeToSign() const;
 	int getGradeToExec() const;

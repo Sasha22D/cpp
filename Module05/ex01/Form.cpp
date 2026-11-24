@@ -25,18 +25,20 @@ Form::Form(const Form& other): _name(other._name), _is_signed(other._is_signed),
 
 Form& Form::operator=(const Form& other) {
 	std::cout << "Form copy assignment ctor called.\n";
+	if (this != &other) {}
+	return *this;
 }
 
 Form::~Form() {
 	std::cout << "Form " << _name << " dtor called.\n";
 }
 
-void Form::beSigned(const Bureaucrat& signer) {
-	if (signer.getGrade() >= _grade_to_sign) {
+void Form::beSigned(Bureaucrat& signer) {
+	if (signer.getGrade() <= _grade_to_sign) {
 		_is_signed = true;
 		std::cout << signer.getName() << " signed " << _name << " form.\n";
 	} else {
-		std::cout << signer.getName() << " couldn't sign " << _name << "form.\n";
+		std::cout << signer.getName() << " couldn't sign " << _name << " form.\n";
 		throw GradeTooLowException();
 		return ;
 	}

@@ -6,6 +6,7 @@
 #include <exception>
 
 #include "Bureaucrat.hpp"
+class Bureaucrat;
 
 class Form
 {
@@ -20,7 +21,7 @@ public:
 	Form( const Form& other );
 	Form& operator=( const Form& other );
 	~Form();
-	void beSigned( const Bureaucrat& signer );
+	void beSigned( Bureaucrat& signer );
 	const std::string& getName() const;
 	bool getSignedStatus() const;
 	int getGradeToSign() const;

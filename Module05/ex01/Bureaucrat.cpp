@@ -34,6 +34,10 @@ Bureaucrat& Bureaucrat::operator=( const Bureaucrat& other ) {
 
 Bureaucrat::~Bureaucrat() {}
 
+void Bureaucrat::signForm(Form& form) {
+	form.beSigned(*this);
+}
+
 void Bureaucrat::incrementGrade() {
 	if (_grade > 1) {
 		_grade -= 1;

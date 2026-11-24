@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 
+#include "Form.hpp"
+
 class Bureaucrat
 {
 public:
@@ -20,6 +22,7 @@ public:
 	Bureaucrat( const Bureaucrat& other );
 	Bureaucrat& operator=( const Bureaucrat& other );
 	~Bureaucrat();
+	void signForm( Form& form );
 	void incrementGrade();
 	void decrementGrade();
 	const std::string getName() const;

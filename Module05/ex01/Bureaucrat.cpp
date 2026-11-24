@@ -1,62 +1,58 @@
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat( const std::string& name, int grade ) : _name(name) {
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Grade is higher than maximum (1).\n";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Grade is lower than minimum (150).\n";
+}
+
+Bureaucrat::Bureaucrat( const std::string& name, int grade ) : _name(name), _grade(grade) {
 	std::cout << "Bureaucrat " << _name << " ctor called.\n";
-	if (grade > 150)
-		throw GradeTooLowException();
-	else if (grade < 1)
+	if (_grade < 1) {
 		throw GradeTooHighException();
-	else
-		_grade = grade;
+		return ;
+	} else if (_grade > 150) {
+		throw GradeTooLowException();
+		return ;
+	}
 }
 
 Bureaucrat::Bureaucrat( const Bureaucrat& other ) {
-	std::cout << "Bureaucrat copy ctor called.\n";
+	std::cout << "Bureaucrat " << _name << " copy ctor called.\n";
 	_grade = other._grade;
 }
 
 Bureaucrat& Bureaucrat::operator=( const Bureaucrat& other ) {
-	std::cout << "Bureaucrat copy assignment ctor called.\n";
+	std::cout << "Bureaucrat " << _name << " copy assignment ctor called.\n";
 	if (this != &other) {
 		_grade = other._grade;
 	}
 	return *this;
 }
 
-Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat dtor called.\n";
-}
+Bureaucrat::~Bureaucrat() {}
 
-void Bureaucrat::signForm( Form& form ) {
-	try {
-		form.beSigned(*this);
-	}
-	catch (GradeTooLowException& e) {
-		std::cout << _name << " couldn’t sign " << form.getName() << " because his grade is too low.\n";
-		return ;
-	}
-	std::cout << _name << " signed " << form.getName() << std::endl;
-}
-
-void Bureaucrat::incrementGrade( void ) {
-	if ((_grade - 1) >= 1) {
+void Bureaucrat::incrementGrade() {
+	if (_grade > 1) {
 		_grade -= 1;
 	} else {
 		throw GradeTooHighException();
+		return ;
 	}
 }
 
-void Bureaucrat::decrementGrade( void ) {
-	if ((_grade + 1) <= 150) {
+void Bureaucrat::decrementGrade() {
+	if (_grade < 150) {
 		_grade += 1;
 	} else {
 		throw GradeTooLowException();
+		return ;
 	}
 }
 
-const std::string& Bureaucrat::getName() const {
+const std::string Bureaucrat::getName() const {
 	return _name;
 }
 

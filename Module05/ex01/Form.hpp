@@ -33,4 +33,6 @@ private:
 	const int _grade_to_exec;
 };
 
+std::ostream& operator<<( std::ostream& out, const Form& form );
+
 #endif

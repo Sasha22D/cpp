@@ -59,3 +59,8 @@ int Form::getGradeToSign() const {
 int Form::getGradeToExec() const {
 	return _grade_to_exec;
 }
+
+std::ostream& operator<<(std::ostream& out, const Form& form) {
+	out << form.getName() << "form grades : grade to sign = " << form.getGradeToSign() << ", grade to exec = " << form.getGradeToExec() << ". Is signed: " << form.getSignedStatus() << '\n';
+	return out;
+}

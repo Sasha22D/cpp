@@ -12,7 +12,8 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 	if (executor.getGrade() <= getGradeToExec()) {
 		std::cout << executor.getName() << " executed " << getName() << ".\n";
 
-		std::ofstream outfile(_target+"_shrubbery");
+		std::string filename = _target + "_shrubbery";
+		std::ofstream outfile (filename.c_str());
 		outfile << " srubbery\n                 srubbery\n          srubberysrubberysrubbery\n       srubberysrubberysrubberysrubbery\n    srubberysrubberysrubberysrubberysrubbery\n                 srubbery\n                 srubbery\n                 srubbery\n";
 		outfile.close();
 	} else {

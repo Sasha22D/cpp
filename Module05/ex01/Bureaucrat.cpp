@@ -63,3 +63,8 @@ const std::string Bureaucrat::getName() const {
 int Bureaucrat::getGrade() const {
 	return _grade;
 }
+
+std::ostream& operator<<( std::ostream& out, const Bureaucrat& bureaucrat ) {
+	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << "\n";
+	return out;
+}

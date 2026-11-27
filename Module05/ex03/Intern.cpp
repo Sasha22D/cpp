@@ -13,9 +13,15 @@ Intern::Intern() {
 	std::cout << "Intern ctor called.\n";
 }
 
-// Intern::Intern(const Intern& other) {}
+Intern::Intern(const Intern& other) {
+	*this = other;
+}
 
-// Intern& Intern::operator=(const Intern& other) {}
+Intern& Intern::operator=(const Intern& other) {
+	if (this != &other)
+		return *this;
+	return *this;
+}
 
 Intern::~Intern() {
 	std::cout << "Intern dtor called.\n";

@@ -14,7 +14,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 
 		std::string filename = _target + "_shrubbery";
 		std::ofstream outfile (filename.c_str());
-		outfile << " srubbery\n                 srubbery\n          srubberysrubberysrubbery\n       srubberysrubberysrubberysrubbery\n    srubberysrubberysrubberysrubberysrubbery\n                 srubbery\n                 srubbery\n                 srubbery\n";
+		outfile << "                 shrubbery\n                 shrubbery\n          shrubberyshrubberyshrubbery\n       shrubberyshrubberyshrubberyshrubbery\n    shrubberyshrubberyshrubberyshrubberyshrubbery\n                 shrubbery\n                 shrubbery\n                 shrubbery\n";
 		outfile.close();
 	} else {
 		std::cout << executor.getName() << " couldn't execute " << getName() << ".\n";

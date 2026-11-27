@@ -20,7 +20,7 @@ public:
 	AForm( const std::string& name, int grade_to_sign, int grade_to_exec );
 	AForm( const AForm& other );
 	AForm& operator=( const AForm& other );
-	~AForm();
+	virtual ~AForm();
 	virtual void execute( const Bureaucrat& executor ) const =0;
 	void beSigned( Bureaucrat& signer );
 	const std::string& getName() const;
